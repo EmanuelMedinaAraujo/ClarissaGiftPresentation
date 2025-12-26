@@ -35,6 +35,7 @@ jobs:
         with:
           node-version: lts/*
           cache: 'npm'
+          cache-dependency-path: 2025/package-lock.json
       - name: Install dependencies
         working-directory: 2025
         run: npm ci

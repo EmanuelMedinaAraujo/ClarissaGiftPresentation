@@ -18,7 +18,7 @@ export const FinalApproval: React.FC<FinalApprovalProps> = ({ onComplete }) => {
       return Math.random() * (max - min) + min;
     };
 
-    const interval: any = setInterval(function() {
+    const interval = setInterval(() => {
       const timeLeft = animationEnd - Date.now();
 
       if (timeLeft <= 0) {

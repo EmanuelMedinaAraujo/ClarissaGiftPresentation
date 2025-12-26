@@ -1,73 +1,39 @@
-# React + TypeScript + Vite
+# Clarissa Gift Presentation 2025
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive, phase-based web application designed to reveal a surprise weekend trip gift.
 
-Currently, two official plugins are available:
+## Purpose
+This project provides a guided narrative experience to reveal a gift itinerary for a weekend in Garmisch-Partenkirchen (January 8-11, 2025). The flow covers packing, hotel reveal, skiing reveal, and a detailed timeline of events (including the LMU Ball and a Philharmonie concert).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- **Frontend:** React 19 + TypeScript
+- **Build Tool:** Vite 7
+- **Styling:** Tailwind CSS 4
+- **Animations:** Framer Motion
+- **Persistence:** LocalStorage (to save progress)
 
-## React Compiler
+## Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-## Expanding the ESLint configuration
+2. **Run development server:**
+   ```bash
+   npm run dev
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. **Build for production:**
+   ```bash
+   npm run build
+   ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Usage
+Once the application is running, simply follow the on-screen instructions. The experience is designed to be linear:
+1. Progress through the intro and "trip teaser".
+2. Interact with the packing list.
+3. Discover the hotel and the "one more thing" (Skiing).
+4. Review the final timeline and "approve" the plan.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Progress is saved automatically. To restart the experience after completion, use the "Restart" button on the final summary screen.

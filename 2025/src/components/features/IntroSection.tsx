@@ -1,14 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Snowflake } from 'lucide-react';
+import { Heart, Snowflake, BookOpen } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { PhotoPlaceholder } from '../ui/PhotoPlaceholder';
 
 interface IntroSectionProps {
   onComplete: () => void;
+  showSkip?: boolean;
+  onSkip?: () => void;
 }
 
-export const IntroSection: React.FC<IntroSectionProps> = ({ onComplete }) => {
+export const IntroSection: React.FC<IntroSectionProps> = ({ onComplete, showSkip, onSkip }) => {
   return (
     <div className="flex flex-col items-center gap-8 text-center pb-12">
       <motion.div
@@ -55,6 +57,7 @@ export const IntroSection: React.FC<IntroSectionProps> = ({ onComplete }) => {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.8 }}
+        className="flex flex-col gap-4 items-center"
       >
         <Button 
             onClick={onComplete} 
@@ -64,6 +67,16 @@ export const IntroSection: React.FC<IntroSectionProps> = ({ onComplete }) => {
         >
           Geschenk auspacken
         </Button>
+
+        {showSkip && onSkip && (
+          <button 
+            onClick={onSkip}
+            className="text-sm text-wellness-secondary hover:text-wellness-accent flex items-center gap-2 transition-colors"
+          >
+            <BookOpen size={14} />
+            Direkt zur Zusammenfassung
+          </button>
+        )}
       </motion.div>
     </div>
   );

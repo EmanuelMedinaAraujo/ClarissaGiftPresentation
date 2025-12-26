@@ -1,9 +1,14 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { Heart } from 'lucide-react';
+import { Heart, List } from 'lucide-react';
+import { Button } from '../ui/Button';
 
-export const FinalApproval: React.FC = () => {
+interface FinalApprovalProps {
+  onComplete: () => void;
+}
+
+export const FinalApproval: React.FC<FinalApprovalProps> = ({ onComplete }) => {
   useEffect(() => {
     const duration = 3 * 1000;
     const animationEnd = Date.now() + duration;
@@ -52,13 +57,25 @@ export const FinalApproval: React.FC = () => {
         </p>
       </motion.div>
       
-       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1 }}
-        className="mt-8 p-4 bg-white/50 rounded-lg text-sm text-gray-500"
+        className="flex flex-col items-center gap-4"
       >
-        <p>Screenshot machen & Vorfreude genießen.</p>
+        <Button 
+          onClick={onComplete} 
+          size="lg" 
+          variant="outline"
+          className="bg-white/50 backdrop-blur-sm"
+          leftIcon={<List size={20} />}
+        >
+          Zusammenfassung anzeigen
+        </Button>
+        
+        <p className="text-sm text-gray-500">
+          Screenshot machen & Vorfreude genießen.
+        </p>
       </motion.div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Layout } from './components/Layout';
 import { AnimatePresence } from 'framer-motion';
 import { IntroSection } from './components/features/IntroSection';
@@ -11,6 +11,7 @@ import { SkiReveal } from './components/features/SkiReveal';
 import { PlanIntro } from './components/features/PlanIntro';
 import { Timeline } from './components/features/Timeline';
 import { FinalApproval } from './components/features/FinalApproval';
+import { SummarySection } from './components/features/SummarySection';
 
 // Define the phases of the application
 export type AppPhase = 
@@ -23,13 +24,29 @@ export type AppPhase =
   | 'reveal'
   | 'plan_intro' 
   | 'timeline' 
-  | 'success';
+  | 'success'
+  | 'summary';
+
+const COMPLETION_KEY = 'clarissa_gift_completed';
 
 function App() {
-  const [currentPhase, setCurrentPhase] = useState<AppPhase>('intro');
+  // Initialize state based on localStorage synchronously to prevent flash of wrong content
+  const [currentPhase, setCurrentPhase] = useState<AppPhase>(() => {
+    try {
+      return localStorage.getItem(COMPLETION_KEY) === 'true' ? 'summary' : 'intro';
+    } catch {
+      return 'intro';
+    }
+  });
+
+  useEffect(() => {
+    if (currentPhase === 'success' || currentPhase === 'summary') {
+      localStorage.setItem(COMPLETION_KEY, 'true');
+    }
+  }, [currentPhase]);
 
   // Helper to determine the current visual theme based on the phase
-  const currentTheme = (['one_more', 'forgotten', 'reveal', 'plan_intro', 'timeline', 'success'] as AppPhase[]).includes(currentPhase) 
+  const currentTheme = (['one_more', 'forgotten', 'reveal', 'plan_intro', 'timeline', 'success', 'summary'] as AppPhase[]).includes(currentPhase) 
     ? 'action' 
     : 'wellness';
 
@@ -54,7 +71,9 @@ function App() {
       case 'timeline':
         return <Timeline onComplete={() => setCurrentPhase('success')} />;
       case 'success':
-        return <FinalApproval />;
+        return <FinalApproval onComplete={() => setCurrentPhase('summary')} />;
+      case 'summary':
+        return <SummarySection onRestart={() => setCurrentPhase('intro')} />;
       default:
         return null;
     }

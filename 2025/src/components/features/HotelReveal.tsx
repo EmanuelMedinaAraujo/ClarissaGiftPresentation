@@ -22,6 +22,9 @@ export const HotelReveal: React.FC<HotelRevealProps> = ({ onComplete }) => {
         <p className="text-wellness-text opacity-90 leading-relaxed max-w-md">
           Nach all den Vorbereitungen haben wir uns etwas Erholung verdient.
         </p>
+        <p className="text-xl font-medium text-wellness-accent">
+          9. - 10. Januar
+        </p>
       </motion.div>
 
       <motion.div

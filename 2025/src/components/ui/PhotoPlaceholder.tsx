@@ -6,9 +6,23 @@ interface PhotoPlaceholderProps {
   label: string;
   height?: string;
   className?: string;
+  imageSrc?: string;
 }
 
-export const PhotoPlaceholder: React.FC<PhotoPlaceholderProps> = ({ label, height = "h-48", className }) => {
+export const PhotoPlaceholder: React.FC<PhotoPlaceholderProps> = ({ label, height = "h-48", className, imageSrc }) => {
+  if (imageSrc) {
+    return (
+      <div 
+        className={clsx(
+          "w-full overflow-hidden rounded-xl shadow-sm",
+          className
+        )}
+      >
+        <img src={imageSrc} alt={label} className="w-full h-auto block" />
+      </div>
+    );
+  }
+
   return (
     <div 
       className={clsx(

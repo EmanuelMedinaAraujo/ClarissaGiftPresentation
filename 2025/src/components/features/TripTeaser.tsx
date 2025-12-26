@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Plus } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { PhotoPlaceholder } from '../ui/PhotoPlaceholder';
+import clarissaImg from '../../assets/clarissa.jpg';
+import emanuelImg from '../../assets/emanuel.jpg';
 
 interface TripTeaserProps {
   onComplete: () => void;
@@ -31,7 +33,7 @@ export const TripTeaser: React.FC<TripTeaserProps> = ({ onComplete }) => {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="flex-1"
         >
-          <PhotoPlaceholder label="Clarissa" height="h-40" />
+          <PhotoPlaceholder label="Clarissa" imageSrc={clarissaImg} />
         </motion.div>
 
         <motion.div
@@ -48,7 +50,7 @@ export const TripTeaser: React.FC<TripTeaserProps> = ({ onComplete }) => {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="flex-1"
         >
-          <PhotoPlaceholder label="Emanuel" height="h-40" />
+          <PhotoPlaceholder label="Emanuel" imageSrc={emanuelImg} />
         </motion.div>
       </div>
 

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Heart, Snowflake, BookOpen } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { PhotoPlaceholder } from '../ui/PhotoPlaceholder';
+import bothOfUsImg from '../../assets/BothOfUs.jpg';
 
 interface IntroSectionProps {
   onComplete: () => void;
@@ -50,7 +51,7 @@ export const IntroSection: React.FC<IntroSectionProps> = ({ onComplete, showSkip
         transition={{ delay: 0.6, duration: 0.8 }}
         className="w-full max-w-sm"
       >
-        <PhotoPlaceholder label="Unser schönstes Foto ❤️" className="h-64 shadow-lg rotate-2" />
+        <PhotoPlaceholder label="Unser schönstes Foto ❤️" className="shadow-lg rotate-2" imageSrc={bothOfUsImg} />
       </motion.div>
 
       <motion.div

@@ -4,6 +4,7 @@ import { Dumbbell, Waves } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { Card } from '../ui/Card';
 import { PhotoPlaceholder } from '../ui/PhotoPlaceholder';
+import hotelImg from '../../assets/hotel.png';
 
 interface HotelRevealProps {
   onComplete: () => void;
@@ -34,7 +35,7 @@ export const HotelReveal: React.FC<HotelRevealProps> = ({ onComplete }) => {
         className="w-full max-w-md"
       >
         <Card className="p-4 bg-white/50 backdrop-blur-sm">
-           <PhotoPlaceholder label="Unser Hotel in den Bergen" height="h-64" />
+           <PhotoPlaceholder label="Unser Hotel in den Bergen" imageSrc={hotelImg} />
            <div className="mt-6 flex justify-around text-wellness-secondary">
               <div className="flex flex-col items-center gap-2">
                 <Waves size={28} />

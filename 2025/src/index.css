@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-wellness-bg: #fdfbf7;
+  --color-wellness-text: #2c3e50;
+  --color-wellness-accent: #d4af37;
+  --color-wellness-secondary: #a8b9bf;
+
+  --color-action-bg: #f0f8ff;
+  --color-action-text: #0f172a;
+  --color-action-accent: #e11d48;
+  --color-action-secondary: #0ea5e9;
+  
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+:root {
+  /* Default to wellness theme */
+  --bg-primary: var(--color-wellness-bg);
+  --text-primary: var(--color-wellness-text);
+  --accent-primary: var(--color-wellness-accent);
+}
+
+.theme-action {
+  --bg-primary: var(--color-action-bg);
+  --text-primary: var(--color-action-text);
+  --accent-primary: var(--color-action-accent);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}

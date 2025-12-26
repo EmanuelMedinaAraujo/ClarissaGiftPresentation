@@ -21,7 +21,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, className, theme = 'we
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.5 }}
-        className={clsx("w-full max-w-md mx-auto relative", className)}
+        className={clsx("w-full max-w-md md:max-w-4xl mx-auto relative", className)}
       >
         {children}
       </motion.main>
